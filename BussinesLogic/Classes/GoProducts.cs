@@ -19,13 +19,4 @@ namespace BussinesLogic.Classes
             return LProducts;
         }
     }
-     public class GoProducts123
-    {
-        public static List<ProductItem> LosProducts()
-        {
-            SearchProducts sp = new SearchProducts();
-            List<ProductItem> LProducts = sp.ReturnProducts();
-            return LProducts;
-        }
-    }
 }
