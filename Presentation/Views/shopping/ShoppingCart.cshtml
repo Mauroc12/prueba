@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Presentation.Models.Product>
+
+@{
+    ViewBag.Title = "Carro de compras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+}
+
+<script>
+    $(document).on("ready", function () {
+
+        $('#btnClear').click(function () {
+            if (confirm("¿Esta Seguro que desea vaciar el carrito?")) {
+                alert("Carrito Vaciado");
+                window.location.href = '/Shopping/Clear/';
+            };
+        })
+    })
+</script>
+
+<div class="row">
+
+    <div id="containerTable">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+
+                </th>
+                <th>
+                    Eliminar
+                </th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">@Html.ActionLink("Eliminar", "Delete", new { id = item.ProductID })</span>
+                    </td>
+                </tr>
+            }
+        </table>
+        <span>@ViewBag.Message</span>
+    </div>
+
+
+</div>
+<div class="row price_button">
+    <div class="col-md-8">
+        <div class="well">
+            <h1 id="price">  Precio Total de la Compra: $@ViewBag.Total O USD @ViewBag.TotalUSD</h1>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <span id="btnClear" class="btn btn-danger">Vaciar</span>
+        <a href="/Shopping/ShowProducts/"><span id="btnContinue" class="btn btn-success">Seguir Comprando</span></a>
+        <a href="/Shopping/Finish/"> <span id="btnFinish" class="btn">Finalizar Compra</span></a>
+    </div>
+
+</div>

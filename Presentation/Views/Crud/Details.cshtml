@@ -1,0 +1,86 @@
+﻿@model Data.Products
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="jumbotron boxlogin text-center">
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductID, "ID")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductName, "Nombre")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SupplierID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SupplierID, "Supplier ID")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CategoryID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryID, "Categoria ID")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.QuantityPerUnit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuantityPerUnit, "Cant. por unidad")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UnitPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitPrice, "Precio")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UnitsInStock)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitsInStock, "Stock")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UnitsOnOrder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitsOnOrder, "Unidades en orden")
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ReorderLevel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReorderLevel)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Discontinued)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Discontinued, "Discontinuado")
+    </div>
+
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { /* id=Model.PrimaryKey */ })  |   @Html.ActionLink("Volver", "Index") 
+    
+    </p>
+    </div>

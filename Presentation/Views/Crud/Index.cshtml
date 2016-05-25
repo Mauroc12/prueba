@@ -1,0 +1,78 @@
+﻿
+
+@model IEnumerable<Data.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<a href="/Crud/Create/"><span class="btn btn-primary btn-lg btn-block" id="btnCreate"> Nuevo Producto</span></a>
+<table id="tableCrud" class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.CategoryName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+        <th>
+            Detalles
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.CategoryName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ProductID })
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductID })
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

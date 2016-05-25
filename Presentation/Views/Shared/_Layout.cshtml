@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css") 
+    @Scripts.Render("~/bundles/Shooping")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+
+
+
+
+
+</head>
+
+<body>
+    <div class="body">
+        <div class="contentBody">
+            <header id="navHead">
+              <img alt="Logo" src="~/Content/themes/base/images/logo1.jpg" id="logo"/>
+            </header>
+            <hr id="divider" />
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/Home/Index">CastroShop</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Productos", "ShowProducts", "Shopping")</li>
+                        <li>@Html.ActionLink("Carrito", "ShoppingCart", "Shopping")</li>
+                        <li><a href="">Sobre Nosotros</a></li>
+                        <li><a href="">Contacto</a></li>
+                    </ul>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                </div><!-- /.container-fluid -->
+            </nav>
+
+
+
+
+            <div class="principal">
+
+                @RenderBody()
+            </div>
+
+            <hr id="dividerFooter" />
+            <footer id="footer">
+
+                <p id="copyright">Copyright © Castroshop 2015. All right reserved.<p />
+
+
+
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+

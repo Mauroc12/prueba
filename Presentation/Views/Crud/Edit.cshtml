@@ -1,0 +1,94 @@
+﻿
+
+@model Data.Products
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="jumbotron boxlogin text-center">
+
+        <h3>Editar Producto</h3>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductName, "Nombre")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductName)
+            @Html.ValidationMessageFor(model => model.ProductName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SupplierID, "Supplier ID")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SupplierID)
+            @Html.ValidationMessageFor(model => model.SupplierID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuantityPerUnit, "Cantidad")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuantityPerUnit)
+            @Html.ValidationMessageFor(model => model.QuantityPerUnit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitPrice)
+            @Html.ValidationMessageFor(model => model.UnitPrice, "Precio")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitsInStock, "Stock")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitsInStock)
+            @Html.ValidationMessageFor(model => model.UnitsInStock)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitsOnOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UnitsOnOrder, "Unit in Order")
+            @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReorderLevel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReorderLevel, "ReOrderLevel")
+            @Html.ValidationMessageFor(model => model.ReorderLevel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Discontinued, "Discontinuado")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Discontinued)
+            @Html.ValidationMessageFor(model => model.Discontinued)
+        </div>
+
+        <p>
+            <input type="submit" class="btn btn-success " value="Editar" />
+            <span id="btnBack" class="btn btn-danger">Volver</span>
+        </p>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

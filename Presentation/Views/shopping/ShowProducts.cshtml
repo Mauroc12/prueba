@@ -1,0 +1,111 @@
+﻿@model Presentation.Models.Product
+
+@{
+    ViewBag.Title = "Lista de Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <script>
+    $(document).on("ready", function () {
+
+        var Pruductvm = new ProductViewModel();
+        ko.applyBindings(Pruductvm);
+        Pruductvm.getAll();
+
+    })
+    </script>
+
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <table id="Products_Table" class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+
+                <tbody data-bind="foreach: ProductList">
+                    <tr>
+                        <td data-bind="text: ProductID"></td>
+                        <td data-bind="text: ProductName"></td>
+                        <td data-bind="text: UnitPrice"></td>
+                        <td data-bind="text: CategoryName"></td>
+                        <td><a href="#" data-bind="click: $parent.SelectProduct">Seleccionar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="loading" style="display:inline">
+                <img src="~/Content/themes/base/images/loading.jpg" alt="Cargando Productos" id="imgLoading" />
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="well">
+
+                <fieldset>
+
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.ProductID, new { data_bind = "value: productID", @readonly = "readonly", style = "display:none" }) @Html.ValidationMessageFor(model => model.ProductID)
+                    </div>
+
+
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.CategoryName, new { data_bind = "value: categoryName", @readonly = "readonly", style = "display:none" }) @Html.ValidationMessageFor(model => model.CategoryName)
+                    </div>
+
+                    <div class="lblDetail">
+                        @Html.LabelFor(model => model.ProductName)
+                    </div>
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.ProductName, new { data_bind = "value: productName", @readonly = "readonly" }) @Html.ValidationMessageFor(model => model.ProductName)
+                    </div>
+
+                    <div class="lblDetail">
+                        @Html.LabelFor(model => model.UnitPrice)
+                    </div>
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.UnitPrice, new { data_bind = "value: unitPrice", @readonly = "readonly" }) @Html.ValidationMessageFor(model => model.UnitPrice)
+                    </div>
+
+                    <div class="lblDetail">
+                        @Html.LabelFor(model => model.ProductQuantity)
+                    </div>
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.ProductQuantity, new { data_bind = "value: quantity", @type = "number" }) @Html.ValidationMessageFor(model => model.ProductQuantity)
+                    </div>
+
+                    <div class="lblDetail">
+                        @Html.LabelFor(model => model.TotalPrice)
+                    </div>
+                    <div class="txtDetail">
+                        @Html.TextBoxFor(model => model.TotalPrice, new { data_bind = "value: totalPrice", @readonly = "readonly" }) @Html.ValidationMessageFor(model => model.TotalPrice)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Agregar" class="btn btn-primary btn-lg" id="btnAdd" />
+                    </p>
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+
+                <a href="/Shopping/ShoppingCart/"><span class="btn btn-success btn-lg" id="btnGoCart">
+                    Ir al carrito
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
